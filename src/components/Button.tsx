@@ -1,7 +1,12 @@
 import React from 'react'
 import { TouchableOpacity, StyleSheet, Text } from 'react-native'
 
-export function Button({ onPress, children}) {
+interface ButtonProps {
+  children: string
+  onPress: () => void
+}
+
+export function Button({ onPress, children }: ButtonProps) {
   return (
     <TouchableOpacity 
       style={styles.button}

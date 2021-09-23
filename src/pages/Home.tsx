@@ -10,13 +10,18 @@ import {
 import { Button } from '../components/Button'
 import { SkillCard } from '../components/SkillCard'
 
+interface MySkillsProps {
+  text: string
+  id: string
+}
+
 export function Home() {
-  const [newSkill, setNewSkill] = useState('')
-  const [mySkills, setMySkills] = useState([])
+  const [newSkill, setNewSkill] = useState<string>('')
+  const [mySkills, setMySkills] = useState<MySkillsProps[] | []>([])
   const [greeting, setGreeting] = useState('')
 
   function handleAddNewSkill() {
-    setMySkills([...mySkills, { text: newSkill, id: Math.random() }])
+    setMySkills([...mySkills, { text: newSkill, id: String(Math.random()) }])
     setNewSkill('')
   }
 
@@ -58,7 +63,7 @@ export function Home() {
 
         <FlatList 
           data={mySkills}
-          keyExtractor={item => item.id}
+          keyExtractor={item => item.text}
           renderItem={({ item }) => (
             <SkillCard skill={item} />
           )}
