@@ -9,7 +9,7 @@ import { Button } from '../components/Button'
 import { SkillCard } from '../components/SkillCard'
 
 export function Home() {
-  const [newSkill, setNewSkill] = useState('')
+  const [newSkill, setNewSkill] = useState({})
   const [mySkills, setMySkills] = useState([])
 
   function handleAddNewSkill() {
@@ -37,9 +37,9 @@ export function Home() {
         </Text>
 
         {
-          mySkills.map(skill => {
+          mySkills.map(skill => (
             <SkillCard skill={skill} />
-          })
+          ))
         }
 
       </View>
