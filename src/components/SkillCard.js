@@ -2,14 +2,14 @@ import React from 'react'
 import { 
   Text,
   StyleSheet,
-  TouchableOpacity
+  TouchableOpacity,
 } from 'react-native'
 
 export function SkillCard({ skill }) {
   return (
-    <TouchableOpacity style={styles.buttonSkill} key={Math.random()}> 
+    <TouchableOpacity style={styles.buttonSkill}> 
       <Text style={styles.textSkill}>
-        {skill}
+        {skill.text}
       </Text>
     </TouchableOpacity>
   )
