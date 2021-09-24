@@ -22,11 +22,15 @@ export function Home() {
 
   function handleAddNewSkill() {
     const data = {
-      id: String(new Date().getTime),
+      id: String(Math.random()),
       text: newSkill
     }
     setMySkills([...mySkills, data])
     setNewSkill('')
+  }
+
+  function handleRemoveSkill(id: string) {
+    setMySkills(mySkills.filter(skill => skill.id !== id))
   }
 
   useEffect(() => {
@@ -57,7 +61,9 @@ export function Home() {
           value={newSkill}
         />
 
-        <Button onPress={handleAddNewSkill} >
+        <Button 
+          onPress={handleAddNewSkill} 
+        >
           Add
         </Button>
 
@@ -67,9 +73,12 @@ export function Home() {
 
         <FlatList 
           data={mySkills}
-          keyExtractor={item => item.text}
+          keyExtractor={item => item.id}
           renderItem={({ item }) => (
-            <SkillCard skill={item} />
+            <SkillCard 
+              skill={item} 
+              onPress={() => handleRemoveSkill(item.id)}
+            />
           )}
         />
       
