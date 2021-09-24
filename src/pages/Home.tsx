@@ -17,11 +17,15 @@ interface MySkillsProps {
 
 export function Home() {
   const [newSkill, setNewSkill] = useState<string>('')
-  const [mySkills, setMySkills] = useState<MySkillsProps[] | []>([])
+  const [mySkills, setMySkills] = useState<MySkillsProps[]>([])
   const [greeting, setGreeting] = useState('')
 
   function handleAddNewSkill() {
-    setMySkills([...mySkills, { text: newSkill, id: String(Math.random()) }])
+    const data = {
+      id: String(new Date().getTime),
+      text: newSkill
+    }
+    setMySkills([...mySkills, data])
     setNewSkill('')
   }
 
